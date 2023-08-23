@@ -1,5 +1,6 @@
 import random
 
+
 template_1 = '''
     It was about {number} {measure_of_time} ago when I arrived at the hospital in a {mode_of_transportation}.
     The hospital is a/an {adjective_1} place, there are a lot of {adjective_2} {noun_1} here.
@@ -42,7 +43,6 @@ def gather_input(placeholders):
 
 
 def madlibs_game(story):
-
     if story == '1':
         selected_template = template_1
         placeholders = ['number', 'measure_of_time', 'mode_of_transportation', 'adjective_1', 'adjective_2', 'noun_1',
@@ -59,6 +59,10 @@ def madlibs_game(story):
                         'magical_creature(plural)_1', 'adjective_3', 'magical_creature(plural)_2',
                         'room_in_a_house', 'noun_1', 'noun_2', 'noun(plural)_3', 'adjective_4', 'noun(plural)_4',
                         'number', 'measure_of_time', 'verb(ending_in_ing)', 'adjective_5', 'noun_5']
+
+    else:
+        print("Invalid story selection")
+        return
 
     template_placeholders = gather_input(placeholders)
 
