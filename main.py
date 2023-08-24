@@ -62,7 +62,7 @@ def madlibs_game(story):
                         'animal 2', 'number 2', 'silly word', 'noun 2']
     elif story == '3':
         selected_template = template_3
-        placeholders = ['person name', 'adjective 1', 'color', 'animal', 'place', 'adjective_2',
+        placeholders = ['person name', 'adjective 1', 'color', 'animal', 'place', 'adjective 2',
                         'magical creature(plural) 1', 'adjective 3', 'magical creature(plural) 2',
                         'room in a house', 'noun 1', 'noun 2', 'noun(plural) 3', 'adjective 4', 'noun(plural) 4',
                         'number', 'measure of time', 'verb(ending in ing)', 'adjective 5', 'noun 5']
