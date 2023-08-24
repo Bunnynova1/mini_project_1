@@ -1,76 +1,87 @@
 import random
 
+# Templates for the Mad Libs stories
+template_1 = ''' 
+It was about {number} {measure of time} ago when I arrived at the hospital in a {mode of transportation}.
+The hospital is a/an {adjective 1} place, there are a lot of {adjective 2} {noun 1} here. There are nurses here who have
+{color} {part of the body}. If someone wants to come into my room I told them that they have to {verb 1} first.
+I’ve decorated my room with {number 2} {noun 2}. Today I talked to a doctor and they were wearing a {noun 3} on their
+{part of the body 2}. I heard that all doctors {verb 2} {noun 4} every day for breakfast. The most {adjective 3} thing
+about being in the hospital is the {silly word} {noun 5}! 
+'''
 
-template_1 = '''
-    It was about {number} {measure_of_time} ago when I arrived at the hospital in a {mode_of_transportation}.
-    The hospital is a/an {adjective_1} place, there are a lot of {adjective_2} {noun_1} here.
-    There are nurses here who have {color} {part_of_the_body}.
-    If someone wants to come into my room I told them that they have to {verb_1} first.
-    I’ve decorated my room with {number_2} {noun_2}.
-    Today I talked to a doctor and they were wearing a {noun_3} on their {part_of_the_body_2}.
-    I heard that all doctors {verb_2} {noun_4} every day for breakfast.
-    The most {adjective_3} thing about being in the hospital is the {silly_word} {noun_5}!
-    '''
+template_2 = ''' 
+This weekend I am going camping with {person name}. I packed my lantern, sleeping bag, and {noun 1}.
+I am so {adjective feeling 1} to {verb 1} in a tent. I am {adjective feeling 2} we might see a {animal},
+I hear they’re kind of dangerous. While we’re camping, we are going to hike, fish, and {verb 2}.
+I have heard that the {color 1} lake is great for {verb ing 3}. Then we will {adverb ly} hike through the forest
+for {number 1} {measure of time}. If I see a {color 2} {animal} while hiking, I am going to bring it home as a pet!
+At night we will tell {number 2} {silly word} stories and roast {noun 2} around the campfire!! 
+'''
 
-template_2 = '''
-    This weekend I am going camping with {person_name}.
-    I packed my lantern, sleeping bag, and {noun_1}. I am so {adjective_feeling_1} to {verb_1} in a tent.
-    I am {adjective_feeling_2} we might see a {animal}, I hear they’re kind of dangerous.
-    While we’re camping, we are going to hike, fish, and {verb_2}.
-    I have heard that the {color_1} lake is great for {verb_ing_3}.
-    Then we will {adverb_ly} hike through the forest for {number_1} {measure_of_time}.
-    If I see a {color_2} {animal} while hiking, I am going to bring it home as a pet!
-    At night we will tell {number_2} {silly_word} stories and roast {noun_2} around the campfire!!
-    '''
-
-template_3 = '''
-    Dear {person_name}, I am writing to you from a {adjective_1} castle in an enchanted forest.
-    I found myself here one day after going for a ride on a {color} {animal} in {place}.
-    There are {adjective_2} {magical_creature(plural)_1} and {adjective_3} {magical_creature(plural)_2} here!
-    In the {room_in_a_house} there is a pool full of {noun_1}.
-    I fall asleep each night on a {noun_2} of {noun(plural)_3} and dream of {adjective_4} {noun(plural)_4}.
-    It feels as though I have lived here for {number} {measure_of_time}.
-    I hope one day you can visit, although the only way to get here now is {verb(ending_in_ing)} on a {adjective_5} {noun_5}!!
-    '''
+template_3 = ''' 
+Dear {person name}, I am writing to you from a {adjective 1} castle in an enchanted forest.
+I found myself here one day after going for a ride on a {color} {animal} in {place}. There are {adjective 2}
+{magical creature(plural) 1} and {adjective 3} {magical creature(plural) 2} here! In the {room in a house}
+there is a pool full of {noun 1}. I fall asleep each night on a {noun 2} of {noun(plural) 3} and dream of
+{adjective 4} {noun(plural) 4}. It feels as though I have lived here for {number} {measure of time}.
+I hope one day you can visit, although the only way to get here now is {verb(ending in ing)} on a {adjective 5}
+{noun 5}!! 
+'''
 
 
+# Function to get user input
 def get_input(prompt, placeholder):
-    return input(f"Enter {prompt}: ")
+    while True:
+        user_input = input(f"Enter {prompt}: ")
+        if user_input:
+            return user_input
+        else:
+            print(f"You must provide input for {placeholder}. Try again.")
 
 
+# Function to gather user input for all placeholders
 def gather_input(placeholders):
-    return {placeholder: get_input(placeholder.replace('_', ' '), placeholder) for placeholder in placeholders}
+    return {placeholder: get_input(placeholder, placeholder) for placeholder in placeholders}
 
 
+# Main function to play the Mad Libs game
 def madlibs_game(story):
+    # Randomly select a story template
+    selected_story = random.choice(['1', '2', '3'])
+
     if story == '1':
         selected_template = template_1
-        placeholders = ['number', 'measure_of_time', 'mode_of_transportation', 'adjective_1', 'adjective_2', 'noun_1',
-                        'color', 'part_of_the_body', 'verb_1', 'number_2', 'noun_2', 'noun_3', 'part_of_the_body_2',
-                        'verb_2', 'noun_4', 'adjective_3', 'silly_word', 'noun_5']
+        placeholders = ['number', 'measure of time', 'mode of transportation', 'adjective 1', 'adjective 2', 'noun 1',
+                        'color', 'part of the body', 'verb 1', 'number 2', 'noun 2', 'noun 3', 'part of the body 2',
+                        'verb 2', 'noun 4', 'adjective 3', 'silly word', 'noun 5']
     elif story == '2':
         selected_template = template_2
-        placeholders = ['person_name', 'noun_1', 'adjective_feeling_1', 'verb_1', 'adjective_feeling_2', 'animal',
-                        'verb_2', 'color_1', 'verb_ing_3', 'adverb_ly', 'number_1', 'measure_of_time', 'color_2',
-                        'animal_2', 'number_2', 'silly_word', 'noun_2']
+        placeholders = ['person name', 'noun 1', 'adjective feeling 1', 'verb 1', 'adjective feeling 2', 'animal',
+                        'verb 2', 'color 1', 'verb ing 3', 'adverb ly', 'number 1', 'measure of time', 'color 2',
+                        'animal 2', 'number 2', 'silly word', 'noun 2']
     elif story == '3':
         selected_template = template_3
-        placeholders = ['person_name', 'adjective_1', 'color', 'animal', 'place', 'adjective_2',
-                        'magical_creature(plural)_1', 'adjective_3', 'magical_creature(plural)_2',
-                        'room_in_a_house', 'noun_1', 'noun_2', 'noun(plural)_3', 'adjective_4', 'noun(plural)_4',
-                        'number', 'measure_of_time', 'verb(ending_in_ing)', 'adjective_5', 'noun_5']
+        placeholders = ['person name', 'adjective 1', 'color', 'animal', 'place', 'adjective_2',
+                        'magical creature(plural) 1', 'adjective 3', 'magical creature(plural) 2',
+                        'room in a house', 'noun 1', 'noun 2', 'noun(plural) 3', 'adjective 4', 'noun(plural) 4',
+                        'number', 'measure of time', 'verb(ending in ing)', 'adjective 5', 'noun 5']
 
     else:
         print("Invalid story selection")
         return
 
+    # Gather user input for placeholders
     template_placeholders = gather_input(placeholders)
 
+    # Replace placeholders with user input in the selected template
     for placeholder, value in template_placeholders.items():
         selected_template = selected_template.replace(f'{{{placeholder}}}', value)
 
+    # Print the filled Mad Libs story
     print(selected_template)
 
 
+# Get user's selected story
 selected_story = input("Choose a story (1, 2, or 3): ")
 madlibs_game(selected_story)
